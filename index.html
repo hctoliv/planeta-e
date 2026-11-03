@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Planeta E Produções · Produção, música e entretenimento</title>
+<meta name="description" content="Planeta E Produções e Gerenciamento de Carreira: produção artística, eventos e gestão estratégica de carreiras. No mercado artístico desde setembro de 2009. São Paulo, SP.">
+<meta name="theme-color" content="#0b0a0c">
+<meta property="og:title" content="Planeta E Produções">
+<meta property="og:description" content="Soluções completas para eventos, produções artísticas e musicais. Transformando ideias em cases de sucesso.">
+<meta property="og:image" content="vid/palco.jpg">
+<link rel="icon" href="img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wdth,wght@0,75..100,400..700;1,75..100,400..700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=3">
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+
+<!-- contagem de lançamento -->
+<div class="boot" id="boot" aria-hidden="true">
+  <div class="boot__ring"><svg viewBox="0 0 200 200"><circle cx="100" cy="100" r="90"/></svg></div>
+  <div class="boot__count" id="bootCount">3</div>
+  <img class="boot__logo" src="img/logo.png" alt="" width="267" height="84">
+  <p class="boot__line">preparando a decolagem</p>
+</div>
+
+<header class="hd" id="hd">
+  <a href="#topo" class="hd__brand" aria-label="Planeta E Produções, início">
+    <img src="img/logo.png" alt="Planeta E Produções" width="267" height="84">
+  </a>
+  <nav class="hd__nav" id="nav" aria-label="Principal">
+    <a href="#sobre"><span>01</span>Sobre</a>
+    <a href="#servicos"><span>02</span>Serviços</a>
+    <a href="#cases"><span>03</span>Cases</a>
+    <a href="#aovivo"><span>04</span>Ao vivo</a>
+    <a href="#contato"><span>05</span>Contato</a>
+  </nav>
+  <a class="hd__cta" href="https://wa.me/5511993810372" target="_blank" rel="noopener">WhatsApp</a>
+  <button class="hd__burger" id="burger" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav"><i></i><i></i></button>
+</header>
+
+<main id="topo">
+
+  <!-- HERO: o planeta -->
+  <section class="hero" id="hero" data-hd="dark">
+    <canvas class="hero__sky" id="sky" aria-hidden="true"></canvas>
+    <div class="hero__fallback" aria-hidden="true"></div>
+    <div class="hero__hud" aria-hidden="true">
+      <span>23°33′S · 46°38′O</span>
+      <span>São Paulo, SP</span>
+      <span id="hudClock">--:--:--</span>
+    </div>
+    <div class="hero__inner">
+      <p class="eyebrow"><i class="dot"></i> produção · música · entretenimento</p>
+      <h1 class="hero__title">
+        <span class="ln"><span>Soluções completas</span></span>
+        <span class="ln"><span>para eventos,</span></span>
+        <span class="ln"><span>produções <em>artísticas</em></span></span>
+        <span class="ln"><span>e musicais</span></span>
+      </h1>
+      <p class="hero__sub">Transformando ideias em cases de sucesso.</p>
+      <div class="hero__actions">
+        <a class="btn btn--fire" href="#contato">Fale com a gente</a>
+        <a class="btn btn--ghost" href="#cases">Ver cases</a>
+      </div>
+    </div>
+    <div class="hero__scroll" aria-hidden="true"><span>role para pousar</span><i></i></div>
+  </section>
+
+  <!-- POUSO: palco revelado -->
+  <section class="land" id="land" data-hd="dark">
+    <div class="land__pin">
+      <div class="land__window">
+        <video class="land__video" src="vid/palco.mp4" poster="vid/palco.jpg" muted loop playsinline preload="metadata"></video>
+        <div class="land__shade"></div>
+      </div>
+      <div class="land__copy">
+        <p class="eyebrow">pouso confirmado</p>
+        <h2 class="land__title"><span>Dos bastidores</span> <span>aos palcos.</span></h2>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE -->
+  <section class="about" id="sobre" data-hd="dark">
+    <div class="wrap">
+      <div class="about__head">
+        <p class="eyebrow"><span class="num">01</span> sobre nós</p>
+        <h2 class="about__name">Planeta E Produções<br><em>e Gerenciamento de Carreira</em></h2>
+      </div>
+      <p class="about__lead" id="aboutLead">Com uma proposta inovadora e foco em resultados, a Planeta E se consolida no mercado como uma empresa especializada em produção artística, eventos e gestão estratégica de carreiras.</p>
+
+      <div class="orbitclock" aria-label="Tempo de mercado desde setembro de 2009">
+        <p class="orbitclock__label">em órbita desde setembro de 2009</p>
+        <div class="orbitclock__row">
+          <div><b id="ocY">17</b><span>anos</span></div>
+          <div><b id="ocM">0</b><span>meses</span></div>
+          <div><b id="ocD">0</b><span>dias</span></div>
+          <div class="orbitclock__t"><b id="ocT">00:00:00</b><span>e contando</span></div>
+        </div>
+      </div>
+
+      <div class="about__cols">
+        <p>Atuando no mercado artístico desde setembro de 2009, com excelência no cenário cultural e musical, a empresa oferece soluções completas que vão da assessoria personalizada até a execução de grandes projetos.</p>
+        <p>Nosso compromisso é transformar talentos em marcas fortes, conectando artistas ao seu público de forma autêntica e impactante.</p>
+        <p>A Planeta E se destaca por seu olhar sensível às tendências e à individualidade de cada artista, prezando sempre pela ética, transparência e resultados consistentes.</p>
+      </div>
+
+      <blockquote class="about__mission">
+        <span class="about__mission-k">nossa missão</span>
+        <p>Potencializar carreiras e entregar experiências memoráveis, tanto nos <em>bastidores</em> quanto nos <em>palcos</em>.</p>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- SERVIÇOS: sistema orbital -->
+  <section class="svc" id="servicos" data-hd="dark">
+    <div class="wrap svc__grid">
+      <div class="svc__text">
+        <p class="eyebrow"><span class="num">02</span> serviços</p>
+        <h2 class="h2">Soluções completas para eventos musicais</h2>
+        <p class="muted">Seja para lançar um novo nome ou reposicionar artistas consagrados, cada frente gira em torno do mesmo centro: o artista e o público.</p>
+        <ol class="svc__list" id="svcList">
+          <li data-i="0"><button type="button"><span>01</span>Produção de shows</button></li>
+          <li data-i="1"><button type="button"><span>02</span>Gerenciamento de carreira</button></li>
+          <li data-i="2"><button type="button"><span>03</span>Planejamento de imagem</button></li>
+          <li data-i="3"><button type="button"><span>04</span>Marketing digital</button></li>
+          <li data-i="4"><button type="button"><span>05</span>Curadoria de repertório</button></li>
+          <li data-i="5"><button type="button"><span>06</span>Intermediação de contratos</button></li>
+          <li data-i="6"><button type="button"><span>07</span>Estratégias de crescimento</button></li>
+          <li data-i="7"><button type="button"><span>08</span>Eventos e camarotes</button></li>
+        </ol>
+      </div>
+      <div class="orbit" id="orbit" aria-hidden="true">
+        <div class="orbit__ring r1"></div><div class="orbit__ring r2"></div><div class="orbit__ring r3"></div>
+        <div class="orbit__core"><span>e</span></div>
+        <div class="orbit__sats" id="sats"></div>
+        <div class="orbit__card" id="orbitCard">
+          <b id="ocardT">Produção de shows</b>
+          <p id="ocardP">Da ideia à última luz apagada.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CASES -->
+  <section class="cases" id="cases" data-hd="dark">
+    <div class="wrap">
+      <div class="cases__head">
+        <div>
+          <p class="eyebrow"><span class="num">03</span> cases</p>
+          <h2 class="h2">Transformando ideias em <em>cases de sucesso</em></h2>
+        </div>
+        <div class="filters" role="tablist" aria-label="Filtrar cases">
+          <button type="button" class="is-on" data-f="all">Todos <sup></sup></button>
+          <button type="button" data-f="musica">Música <sup></sup></button>
+          <button type="button" data-f="humor">Humor <sup></sup></button>
+          <button type="button" data-f="marcas">Marcas e esporte <sup></sup></button>
+          <button type="button" data-f="criacao">Criação <sup></sup></button>
+        </div>
+      </div>
+      <ul class="cases__grid" id="casesGrid"></ul>
+    </div>
+  </section>
+
+  <!-- AO VIVO: trilha horizontal de vídeos -->
+  <section class="live" id="aovivo" data-hd="dark">
+    <div class="live__pin">
+      <div class="live__head">
+        <p class="eyebrow"><span class="num">04</span> <i class="rec"></i> ao vivo</p>
+        <h2 class="h2">Palco cheio, <em>público junto.</em></h2>
+        <p class="muted">Toque em um vídeo para ligar o som.</p>
+        <div class="live__progress"><i id="liveBar"></i></div>
+      </div>
+      <div class="live__track" id="liveTrack">
+        <figure class="reel" data-v="bluenote"><video muted loop playsinline preload="none" poster="vid/bluenote.jpg" data-src="vid/bluenote.mp4"></video><figcaption><b>Blue Note</b><span>show</span></figcaption><i class="reel__snd"></i></figure>
+        <figure class="reel" data-v="elton"><video muted loop playsinline preload="none" poster="vid/elton.jpg" data-src="vid/elton.mp4"></video><figcaption><b>Elton</b><span>tributo · Arena Tatuapé</span></figcaption><i class="reel__snd"></i></figure>
+        <figure class="reel" data-v="relive"><video muted loop playsinline preload="none" poster="vid/relive.jpg" data-src="vid/relive.mp4"></video><figcaption><b>Banda Relive</b><span>ao vivo</span></figcaption><i class="reel__snd"></i></figure>
+        <figure class="reel" data-v="benza"><video muted loop playsinline preload="none" poster="vid/benza.jpg" data-src="vid/benza.mp4"></video><figcaption><b>Benza Deus</b><span>grupo</span></figcaption><i class="reel__snd"></i></figure>
+        <figure class="reel" data-v="coldplay"><video muted loop playsinline preload="none" poster="vid/coldplay.jpg" data-src="vid/coldplay.mp4"></video><figcaption><b>Davi Cartaxo</b><span>Coldplay</span></figcaption><i class="reel__snd"></i></figure>
+        <figure class="reel" data-v="arena"><video muted loop playsinline preload="none" poster="vid/arena.jpg" data-src="vid/arena.mp4"></video><figcaption><b>Arena Corinthians</b><span>marcas no estádio</span></figcaption><i class="reel__snd"></i></figure>
+        <figure class="reel" data-v="bluenote2"><video muted loop playsinline preload="none" poster="vid/bluenote2.jpg" data-src="vid/bluenote2.mp4"></video><figcaption><b>Blue Note</b><span>bis</span></figcaption><i class="reel__snd"></i></figure>
+        <div class="live__end"><p>Tem um show<br>pra colocar<br>em <em>órbita?</em></p><a class="btn btn--fire" href="#contato">Mande seu sinal</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BANANA GUN -->
+  <section class="bg" id="banana" data-hd="dark">
+    <video class="bg__video" muted loop playsinline preload="none" poster="vid/bananagun.jpg" data-src="vid/bananagun.mp4"></video>
+    <div class="bg__shade"></div>
+    <div class="wrap bg__copy">
+      <p class="eyebrow">case em destaque</p>
+      <h2 class="bg__title">Banana Gun</h2>
+      <p class="bg__sub">A 1ª banda virtual do país.<br>Personagens, universo e música criados do zero.</p>
+    </div>
+    <span class="bg__tag" aria-hidden="true">sinal recebido de outro planeta</span>
+  </section>
+
+  <!-- ARQUIVO -->
+  <section class="arch" id="arquivo" data-hd="dark">
+    <div class="wrap arch__head">
+      <p class="eyebrow">arquivo de bordo</p>
+      <h2 class="h2">Cartazes, festivais e noites de casa cheia</h2>
+    </div>
+    <div class="marq" data-dir="-1">
+      <div class="marq__row">
+        <img src="img/f-loucos-sq.jpg" alt="Cartaz Loucos por Rir, festival de stand up comedy">
+        <img src="img/f-jobim.jpg" alt="Cartaz Tons sobre Jobim">
+        <img src="img/f-despedida.jpg" alt="Cartaz Despedida de Solteiro, stand up">
+        <img src="img/f-soul.jpg" alt="Cartaz Soul Connection com Ed Motta">
+        <img src="img/f-clima.jpg" alt="Grupo Clima de Montanha">
+        <img src="img/f-risofest.jpg" alt="Logo Riso Fest">
+        <img src="img/f-loucos-marco.jpg" alt="Programação Loucos por Rir">
+        <img src="img/f-jhuly.jpg" alt="Jhuly Borges">
+      </div>
+    </div>
+    <div class="marq" data-dir="1">
+      <div class="marq__row">
+        <img src="img/f-plateia.jpg" alt="Plateia lotada em show de humor">
+        <img src="img/f-loucos-thiago.jpg" alt="Loucos por Rir com Thiago Ventura">
+        <img src="img/f-openmusic.jpg" alt="Open Music, GP Brasil de F1">
+        <img src="img/f-equipe.jpg" alt="Equipe e artistas reunidos">
+        <img src="img/f-stylistics.jpg" alt="Show especial The Stylistics">
+        <img src="img/f-loucos-camiseta.jpg" alt="Camiseta Loucos por Rir">
+        <img src="img/f-plateia2.jpg" alt="Plateia em festa">
+        <img src="img/f-violao.jpg" alt="Cantora com violão">
+        <img src="img/f-pedro-manso.jpg" alt="Riso Fest com Pedro Manso">
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTATO -->
+  <section class="contact" id="contato" data-hd="dark">
+    <div class="radar" aria-hidden="true"><i></i><i></i><i></i><b></b></div>
+    <div class="wrap contact__grid">
+      <div class="contact__text">
+        <p class="eyebrow"><span class="num">05</span> contato</p>
+        <h2 class="contact__title">Mande<br>seu <em>sinal.</em></h2>
+        <p class="muted">Conte o que você tem em mente. A mensagem sai pronta no WhatsApp da Planeta E.</p>
+        <ul class="contact__list">
+          <li><span>WhatsApp</span><a href="https://wa.me/5511993810372" target="_blank" rel="noopener">(11) 9 9381-0372</a></li>
+          <li><span>E-mail</span><a href="mailto:sanplanetae@gmail.com">sanplanetae@gmail.com</a></li>
+          <li><span>Base</span><b>São Paulo, SP</b></li>
+          <li><span>Redes</span><span class="contact__soc"><a href="https://www.instagram.com/sandritomusic" target="_blank" rel="noopener">Instagram</a><a href="https://www.facebook.com/share/16fk3D4ihV/" target="_blank" rel="noopener">Facebook</a></span></li>
+        </ul>
+      </div>
+      <form class="sig" id="sig" novalidate>
+        <fieldset>
+          <legend>Tipo de projeto</legend>
+          <div class="chips" id="sigType">
+            <label><input type="radio" name="tipo" value="Show ou turnê" checked><span>Show ou turnê</span></label>
+            <label><input type="radio" name="tipo" value="Gerenciamento de carreira"><span>Carreira</span></label>
+            <label><input type="radio" name="tipo" value="Evento corporativo ou camarote"><span>Evento / camarote</span></label>
+            <label><input type="radio" name="tipo" value="Festival de humor"><span>Festival de humor</span></label>
+            <label><input type="radio" name="tipo" value="Marca e patrocínio"><span>Marca / patrocínio</span></label>
+          </div>
+        </fieldset>
+        <div class="sig__row">
+          <label class="fld"><span>Seu nome</span><input name="nome" autocomplete="name" required></label>
+          <label class="fld"><span>Data prevista</span><input name="data" placeholder="ex.: março de 2027"></label>
+        </div>
+        <label class="fld"><span>Conte a ideia</span><textarea name="msg" rows="4" placeholder="Artista, local, público esperado..."></textarea></label>
+        <button class="btn btn--fire sig__go" type="submit"><span>Transmitir pelo WhatsApp</span></button>
+        <p class="sig__err" id="sigErr" role="alert"></p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="ft">
+  <div class="wrap ft__grid">
+    <img src="img/logo.png" alt="Planeta E Produções" width="267" height="84" class="ft__logo">
+    <nav class="ft__nav" aria-label="Rodapé">
+      <a href="#sobre">Sobre</a><a href="#servicos">Serviços</a><a href="#cases">Cases</a><a href="#contato">Contato</a>
+    </nav>
+    <p class="ft__c">© <span id="yr">2026</span> Planeta E Produções. Todos os direitos reservados.</p>
+  </div>
+  <div class="ft__big" aria-hidden="true">planeta<em>e</em></div>
+</footer>
+
+<!-- modal de case -->
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="mT" hidden>
+  <div class="modal__bg" data-close></div>
+  <div class="modal__box">
+    <button class="modal__x" type="button" aria-label="Fechar" data-close>×</button>
+    <img id="mImg" alt="">
+    <div class="modal__txt">
+      <span id="mCat"></span>
+      <h3 id="mT"></h3>
+      <p id="mRole"></p>
+      <a class="btn btn--fire" id="mGo" href="#contato">Quero algo assim</a>
+    </div>
+  </div>
+</div>
+
+<div class="grain" aria-hidden="true"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="main.js?v=2"></script>
+</body>
+</html>
