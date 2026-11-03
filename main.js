@@ -255,12 +255,14 @@ void main(){
     $('#mCat').textContent = CAT[c]; $('#mT').textContent = t; $('#mRole').textContent = r;
     lastFocus = b;
     modal.hidden = false;
+    document.body.classList.add('modal-open');
     lenis && lenis.stop();
     $('.modal__x').focus();
   });
   function closeModal() {
     if (modal.hidden) return;
     modal.hidden = true;
+    document.body.classList.remove('modal-open');
     lenis && lenis.start();
     lastFocus && lastFocus.focus();
   }
@@ -308,6 +310,10 @@ void main(){
     v.muted = !on; if (on) { v.currentTime = 0; v.play().catch(() => {}); }
     phone.classList.toggle('is-snd', on);
   });
+
+  /* ---------- whatsapp flutuante: mostra o convite por alguns segundos ---------- */
+  const waf = $('.wa-float');
+  setTimeout(() => { waf.classList.add('is-hint'); setTimeout(() => waf.classList.remove('is-hint'), 4500); }, 4200);
 
   /* ---------- formulário → WhatsApp ---------- */
   $('#sig').addEventListener('submit', e => {
