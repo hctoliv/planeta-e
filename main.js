@@ -61,7 +61,7 @@
     if (!e.isIntersecting) return;
     navLinks.forEach(a => a.classList.toggle('is-on', a.getAttribute('href') === '#' + e.target.id));
   }), { rootMargin: '-45% 0px -50% 0px' });
-  ['sobre', 'servicos', 'cases', 'aovivo', 'contato'].forEach(id => $('#' + id) && io.observe($('#' + id)));
+  ['mallandro', 'sobre', 'servicos', 'destaques', 'aovivo', 'contato'].forEach(id => $('#' + id) && io.observe($('#' + id)));
 
   /* ---------- relógio do HUD e órbita desde set/2009 ---------- */
   const START = new Date(2009, 8, 1, 0, 0, 0);
@@ -84,56 +84,47 @@
   const sky = $('#sky');
   const planet = { s: 0, mx: 0, my: 0, tx: 0, ty: 0, on: true };
   (function initPlanet() {
-    const gl = sky.getContext('webgl', { antialias: false, alpha: false, powerPreference: 'high-performance' });
+    const gl = sky.getContext('webgl', { antialias: true, alpha: false, powerPreference: 'high-performance' });
     if (!gl) { sky.remove(); return; }
     const vs = 'attribute vec2 p;void main(){gl_Position=vec4(p,0.,1.);}';
     const fs = `precision highp float;
-uniform vec2 R;uniform float T;uniform float S;uniform vec2 M;
-float h(vec3 p){p=fract(p*.3183099+.1);p*=17.;return fract(p.x*p.y*p.z*(p.x+p.y+p.z));}
-float n(vec3 x){vec3 i=floor(x),f=fract(x);f=f*f*(3.-2.*f);
-return mix(mix(mix(h(i),h(i+vec3(1,0,0)),f.x),mix(h(i+vec3(0,1,0)),h(i+vec3(1,1,0)),f.x),f.y),
-mix(mix(h(i+vec3(0,0,1)),h(i+vec3(1,0,1)),f.x),mix(h(i+vec3(0,1,1)),h(i+vec3(1,1,1)),f.x),f.y),f.z);}
-float fbm(vec3 p){float a=.5,v=0.;for(int i=0;i<5;i++){v+=a*n(p);p=p*2.03+vec3(1.7,9.2,3.1);a*=.5;}return v;}
+uniform vec2 R;uniform float T;uniform float S;uniform vec2 M;uniform vec3 P;
+#define PI 3.14159265
+float h(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
+float n2(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(h(i),h(i+vec2(1,0)),f.x),mix(h(i+vec2(0,1)),h(i+vec2(1,1)),f.x),f.y);}
 void main(){
   vec2 uv=(gl_FragCoord.xy-.5*R)/R.y;
-  vec3 col=vec3(.012,.010,.014);
-  vec3 F=vec3(.843,.286,.129);
-  // nebulosa
-  float neb=fbm(vec3(uv*1.6+M*.03,T*.01));
-  col+=vec3(.20,.06,.05)*pow(neb,3.)*.9;
-  // estrelas
-  for(int k=0;k<3;k++){float fk=float(k);
-    vec2 g=(uv+M*(.01+fk*.012))*(70.+fk*55.)+fk*31.;vec2 id=floor(g);vec2 f=fract(g)-.5;
-    float r=h(vec3(id,fk*7.+1.));
-    if(r>.955){vec2 o=vec2(h(vec3(id,fk+3.)),h(vec3(id,fk+5.)))-.5;float d=length(f-o*.7);
-      float tw=.55+.45*sin(T*(1.+r*3.)+r*80.);col+=mix(vec3(1.,.85,.75),vec3(.8,.85,1.),h(vec3(id,9.)))*smoothstep(.09,0.,d)*tw*(.45+fk*.3);}}
-  // planeta
-  float Rad=mix(1.05,4.2,S*S);
-  vec2 c=vec2(.18*(1.-S)+M.x*.02,mix(-1.38,-.15,S)+M.y*.015);
-  vec2 q=(uv-c)/Rad;float d2=dot(q,q);float dd=sqrt(d2);
-  vec3 L=normalize(vec3(-.35,.8,.35));
-  if(d2<1.){
-    vec3 N=vec3(q,sqrt(1.-d2));
-    float a=T*.025;vec3 P=N;P.xz=mat2(cos(a),-sin(a),sin(a),cos(a))*P.xz;
-    float f=fbm(P*2.6);
-    float b=fbm(vec3(P.y*7.+f*2.5,P.x*1.2,P.z*1.2));
-    vec3 base=mix(vec3(.045,.035,.04),vec3(.20,.10,.075),b);
-    base=mix(base,vec3(.42,.16,.07),smoothstep(.55,.78,f)*.7);
-    float dif=max(dot(N,L),0.);
-    vec3 lit=base*(.05+1.25*dif);
-    float cr=smoothstep(.035,.0,abs(fbm(P*5.+3.)-.5));
-    lit+=F*cr*(1.-smoothstep(-.1,.25,dot(N,L)))*.55;
-    float fr=pow(1.-N.z,2.5);
-    lit+=F*fr*(.25+1.3*smoothstep(-.3,.6,dot(N,L)));
-    lit+=vec3(1.,.6,.4)*pow(fr,6.)*smoothstep(0.,.7,dot(N,L))*.8;
-    col=lit;
+  vec3 cream=vec3(1.,.957,.878),cream2=vec3(.99,.885,.70),blue=vec3(.118,.247,1.),navy=vec3(.063,.075,.36),yel=vec3(1.,.831,0.),red=vec3(1.,.18,.23);
+  float Rad=P.z*mix(1.,7.5,S*S);
+  vec2 c=mix(P.xy,vec2(0.),S)+M*.012;
+  vec2 d=uv-c;float ang=atan(d.y,d.x);float dist=length(d);
+  float rays=step(.5,fract(ang/(2.*PI)*30.+T*.01));
+  vec3 col=mix(cream,cream2,rays*smoothstep(Rad*4.5,Rad*1.2,dist)*.85);
+  vec2 g=gl_FragCoord.xy/(R.y/110.);vec2 gf=fract(g)-.5;
+  float ht=clamp(-uv.y*.9-uv.x*.35+.05,0.,1.);
+  col=mix(col,cream2,step(length(gf),.3*ht)*.8);
+  float tl=.32;mat2 rot=mat2(cos(tl),-sin(tl),sin(tl),cos(tl));
+  vec2 q=rot*d;vec2 e=vec2(q.x,q.y/.27)/Rad;float er=length(e);
+  float rIn=1.3,rOut=1.75,ow=.05;
+  float ringM=step(rIn,er)*step(er,rOut);
+  float ringE=step(rIn-ow,er)*step(er,rOut+ow);
+  vec3 ringC=mix(yel,red,step(1.56,er)*step(er,1.63));
+  float front=step(q.y,0.);
+  col=mix(col,navy,ringE*(1.-front));col=mix(col,ringC,ringM*(1.-front));
+  vec2 pq=d/Rad;float pd=dot(pq,pq);float od=sqrt(pd);
+  if(pd<1.){
+    vec3 N=vec3(pq,sqrt(1.-pd));
+    float lon=atan(N.x,N.z)+T*.06;float lat=N.y;
+    float b=sin(lat*8.+sin(lon*2.+lat*3.)*.7+n2(vec2(lon*1.4,lat*4.))*1.6);
+    vec3 base=mix(blue,vec3(.27,.45,1.),step(.4,b));base=mix(base,vec3(.07,.16,.74),step(b,-.5));
+    vec3 L=normalize(vec3(-.5,.6,.65));float dif=dot(N,L);
+    float tone=dif>.5?1.:dif>0.?.8:.6;
+    col=base*tone;
+    float spec=step(.965,dot(reflect(-L,N),vec3(0,0,1)));col=mix(col,vec3(1.),spec*.75);
   }
-  float out_=max(dd-1.,0.)*Rad;
-  float side=smoothstep(-.9,.9,dot(normalize(vec3(q,.0001)),L));
-  col+=F*exp(-out_*9.)*(.25+.9*side)*step(1.,d2)*.9;
-  col+=F*exp(-out_*2.2)*.12*step(1.,d2);
-  col+=F*S*S*.35;
-  col=pow(col,vec3(.92));
+  float t=.0075/Rad;
+  col=mix(col,navy,step(abs(od-1.),t));
+  col=mix(col,navy,ringE*front);col=mix(col,ringC,ringM*front);
   gl_FragColor=vec4(col,1.);
 }`;
     const sh = (t, src) => { const s = gl.createShader(t); gl.shaderSource(s, src); gl.compileShader(s); if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) throw gl.getShaderInfoLog(s); return s; };
@@ -152,7 +143,7 @@ void main(){
     gl.enableVertexAttribArray(loc);
     gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
     const uR = gl.getUniformLocation(prog, 'R'), uT = gl.getUniformLocation(prog, 'T'),
-      uS = gl.getUniformLocation(prog, 'S'), uM = gl.getUniformLocation(prog, 'M');
+      uS = gl.getUniformLocation(prog, 'S'), uM = gl.getUniformLocation(prog, 'M'), uP = gl.getUniformLocation(prog, 'P');
     const size = () => {
       const scale = Math.min(devicePixelRatio || 1, innerWidth < 700 ? 1.25 : 1.5) * (innerWidth > 1800 ? .8 : 1);
       sky.width = Math.round(sky.clientWidth * scale);
@@ -174,6 +165,9 @@ void main(){
       gl.uniform1f(uT, RM ? 20 : (now - t0) / 1000 + 20);
       gl.uniform1f(uS, planet.s);
       gl.uniform2f(uM, planet.mx, planet.my);
+      const asp = sky.width / sky.height;
+      if (asp > 1.05) gl.uniform3f(uP, asp * .5 - .33, .06, .25);
+      else gl.uniform3f(uP, 0, -.34, .2);
       gl.drawArrays(gl.TRIANGLES, 0, 3);
       requestAnimationFrame(draw);
     }
@@ -182,6 +176,7 @@ void main(){
 
   /* ---------- cases ---------- */
   const CASES = [
+    ['mallandro', 'Sérgio Mallandro', 'humor', 'Artista principal · produção de shows'],
     ['bruno-lobo', 'DJ Bruno Lobo', 'musica', 'Produção artística'],
     ['banana-gun', 'Banana Gun', 'musica', '1ª banda virtual do país'],
     ['jobim', 'Tons sobre Jobim', 'musica', 'Parceria'],
@@ -192,7 +187,6 @@ void main(){
     ['emocoes', 'Projeto Emoções (navio)', 'musica', 'Produção de cast'],
     ['loucos', 'Loucos por Rir', 'humor', 'Criação e produção'],
     ['riso-fest', 'Riso Fest', 'humor', 'Criação e produção'],
-    ['mallandro', 'Sérgio Mallandro', 'humor', 'Produção'],
     ['papagaio', 'Papagaio Falante', 'humor', 'Produção'],
     ['camarote-arena', 'Camarote Arena Corinthians', 'marcas', 'Produção da inauguração'],
     ['camarote-f1', 'Camarote F1', 'marcas', 'Produção'],
@@ -296,6 +290,16 @@ void main(){
     }
   }));
 
+  const phone = $('#starPhone');
+  phone.addEventListener('click', () => {
+    const v = phone.querySelector('video');
+    if (!v.src) v.src = v.dataset.src;
+    const on = v.muted;
+    $$('.reel').forEach(o => { o.classList.remove('is-snd'); o.querySelector('video').muted = true; });
+    v.muted = !on; if (on) { v.currentTime = 0; v.play().catch(() => {}); }
+    phone.classList.toggle('is-snd', on);
+  });
+
   /* ---------- formulário → WhatsApp ---------- */
   $('#sig').addEventListener('submit', e => {
     e.preventDefault();
@@ -381,7 +385,7 @@ void main(){
   });
 
   // reveals
-  const rv = ['.sec__head', '.about__photo', '.about__text > p:not(.about__lead)', '.mvv article', '.orbitclock', '.arch__head', '.contact__text > *', '.sig', '.ft__cta', '.ft__cols > *'];
+  const rv = ['.star__lead', '.star__list li', '.star__actions', '.sec__head', '.about__photo', '.about__text > p:not(.about__lead)', '.mvv article', '.orbitclock', '.arch__head', '.contact__text > *', '.sig', '.ft__cta', '.ft__cols > *'];
   rv.forEach(sel => $$(sel).forEach(el => el.classList.add('rv')));
   ScrollTrigger.batch('.rv', {
     start: 'top 88%',
@@ -414,6 +418,15 @@ void main(){
     return () => tw.kill();
   });
 
+  // mallandro: entrada do recorte, faixa gigante andando
+  if (!RM) {
+    gsap.from('.star__cut', { yPercent: 25, opacity: 0, duration: 1.2, ease: 'power3.out', scrollTrigger: { trigger: '.star__stage', start: 'top 75%' } });
+    gsap.from('.star__phone', { y: 80, rotate: 8, opacity: 0, duration: 1, delay: .2, ease: 'power3.out', scrollTrigger: { trigger: '.star__stage', start: 'top 75%' } });
+    gsap.from('.star__poster', { y: 60, rotate: -10, opacity: 0, duration: 1, delay: .35, ease: 'power3.out', scrollTrigger: { trigger: '.star__stage', start: 'top 75%' } });
+    gsap.fromTo('.star__marqrow', { xPercent: 0 }, { xPercent: -30, ease: 'none', scrollTrigger: { trigger: '#mallandro', start: 'top bottom', end: 'bottom top', scrub: true } });
+    gsap.from('.star__name span', { yPercent: 40, opacity: 0, duration: 1, ease: 'power4.out', scrollTrigger: { trigger: '.star__name', start: 'top 85%' } });
+  }
+
   // processo: linha de progresso e etapas acesas
   const procSteps = $$('#procList li');
   ScrollTrigger.create({
@@ -430,7 +443,7 @@ void main(){
   mm.add('(min-width: 901px)', () => {
     const cards = $$('.fcase');
     cards.slice(0, -1).forEach((card, i) => {
-      gsap.to(card, { scale: .92, opacity: .45, ease: 'none', scrollTrigger: { trigger: cards[i + 1], start: 'top bottom', end: 'top 25%', scrub: true } });
+      gsap.to(card, { scale: .93, ease: 'none', scrollTrigger: { trigger: cards[i + 1], start: 'top bottom', end: 'top 25%', scrub: true } });
     });
   });
 

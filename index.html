@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Planeta E Produções · Produção, música e entretenimento</title>
 <meta name="description" content="Planeta E Produções e Gerenciamento de Carreira: produção artística, eventos e gestão estratégica de carreiras. No mercado artístico desde setembro de 2009. São Paulo, SP.">
-<meta name="theme-color" content="#0b0a0c">
+<meta name="theme-color" content="#fff4e0">
 <meta property="og:title" content="Planeta E Produções">
 <meta property="og:description" content="Soluções completas para eventos, produções artísticas e musicais. Transformando ideias em cases de sucesso.">
 <meta property="og:image" content="vid/palco.jpg">
@@ -13,8 +13,8 @@
 <link rel="alternate icon" href="img/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wdth,wght@0,75..100,400..700;1,75..100,400..700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=5">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,800;1,900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=9">
 <script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
@@ -23,7 +23,7 @@
 <div class="boot" id="boot" aria-hidden="true">
   <div class="boot__ring"><svg viewBox="0 0 200 200"><circle cx="100" cy="100" r="90"/></svg></div>
   <div class="boot__count" id="bootCount">3</div>
-  <img class="boot__logo" src="img/logo.svg" alt="" width="326" height="100">
+  <img class="boot__logo" src="img/logo-light.svg" alt="" width="417" height="108">
   <p class="boot__line">preparando a decolagem</p>
 </div>
 
@@ -42,12 +42,12 @@
 
 <header class="hd" id="hd">
   <a href="#topo" class="hd__brand" aria-label="Planeta E Produções, início">
-    <img src="img/logo.svg" alt="Planeta E Produções" width="326" height="100">
+    <img src="img/logo.svg" alt="Planeta E Produções" width="417" height="108">
   </a>
   <nav class="hd__nav" id="nav" aria-label="Principal">
-    <a href="#sobre"><span>01</span>Sobre</a>
-    <a href="#servicos"><span>02</span>Serviços</a>
-    <a href="#processo"><span>03</span>Processo</a>
+    <a href="#mallandro"><span>01</span>Mallandro</a>
+    <a href="#sobre"><span>02</span>Sobre</a>
+    <a href="#servicos"><span>03</span>Serviços</a>
     <a href="#destaques"><span>04</span>Cases</a>
     <a href="#aovivo"><span>05</span>Ao vivo</a>
     <a href="#contato"><span>06</span>Contato</a>
@@ -66,6 +66,12 @@
   <section class="hero" id="hero">
     <canvas class="hero__sky" id="sky" aria-hidden="true"></canvas>
     <div class="hero__fallback" aria-hidden="true"></div>
+    <div class="bulbs" aria-hidden="true"><i class="bulbs__t"></i><i class="bulbs__b"></i><i class="bulbs__l"></i><i class="bulbs__r"></i></div>
+    <div class="seal" aria-hidden="true">
+      <svg viewBox="0 0 200 200"><defs><path id="sealp" d="M100,100 m-74,0 a74,74 0 1,1 148,0 a74,74 0 1,1 -148,0"/></defs>
+        <circle cx="100" cy="100" r="98"/><text><textPath href="#sealp">★ produções ★ desde 2009 ★ entretenimento </textPath></text></svg>
+      <b>ao<br>vivo</b>
+    </div>
     <div class="hero__hud" aria-hidden="true">
       <span>23°33′S · 46°38′O</span>
       <span>São Paulo, SP</span>
@@ -85,6 +91,11 @@
         <a class="btn btn--ghost" href="#destaques">Ver cases</a>
       </div>
     </div>
+    <a class="hero__star" href="#mallandro">
+      <img src="img/mallandro-cut.png" alt="" width="500" height="495">
+      <span><small>artista principal</small><b>Sérgio Mallandro</b></span>
+      <i aria-hidden="true">→</i>
+    </a>
     <dl class="hero__stats">
       <div><dt>Desde</dt><dd>2009</dd></div>
       <div><dt>Cases no portfólio</dt><dd>20</dd></div>
@@ -93,13 +104,13 @@
     </dl>
   </section>
 
-  <!-- 2. MARCAS E PALCOS -->
-  <section class="brands" aria-label="Marcas, palcos e projetos">
-    <p class="brands__k">Marcas, palcos e projetos que já passaram pela nossa órbita</p>
-    <div class="marq marq--brands" data-dir="-1">
-      <div class="marq__row">
-        <span>Corinthians</span><i>✦</i><span>Hapvida</span><i>✦</i><span>Cartão de Todos</span><i>✦</i><span>Camarote F1</span><i>✦</i><span>Teatro Omni Corinthians</span><i>✦</i><span>Bitci</span><i>✦</i><span>Blue Note</span><i>✦</i><span>Arena Corinthians</span><i>✦</i><span>Riso Fest</span><i>✦</i><span>Loucos por Rir</span><i>✦</i><span>Tears for Fears Experience</span><i>✦</i>
-      </div>
+  <!-- 2. FITAS -->
+  <section class="tapes" aria-label="Marcas, palcos e projetos">
+    <div class="tape tape--y marq" data-dir="-1">
+      <div class="marq__row"><span>Sérgio Mallandro</span><i>★</i><span>Corinthians</span><i>★</i><span>Hapvida</span><i>★</i><span>Cartão de Todos</span><i>★</i><span>Camarote F1</span><i>★</i><span>Teatro Omni Corinthians</span><i>★</i><span>Blue Note</span><i>★</i><span>Riso Fest</span><i>★</i><span>Loucos por Rir</span><i>★</i><span>Tears for Fears Experience</span><i>★</i></div>
+    </div>
+    <div class="tape tape--r marq" data-dir="1">
+      <div class="marq__row"><span>Ao vivo</span><i>✦</i><span>Glu glu iê iê</span><i>✦</i><span>Produções</span><i>✦</i><span>Shows</span><i>✦</i><span>Eventos</span><i>✦</i><span>Carreiras</span><i>✦</i><span>Ao vivo</span><i>✦</i><span>Glu glu iê iê</span><i>✦</i><span>Produções</span><i>✦</i><span>Shows</span><i>✦</i></div>
     </div>
   </section>
 
@@ -113,6 +124,38 @@
       <div class="land__copy">
         <p class="eyebrow">pouso confirmado</p>
         <h2 class="land__title"><span>Dos bastidores</span> <span>aos palcos.</span></h2>
+      </div>
+    </div>
+  </section>
+
+  <!-- ARTISTA PRINCIPAL: SÉRGIO MALLANDRO -->
+  <section class="star" id="mallandro">
+    <div class="star__marq" aria-hidden="true"><div class="star__marqrow"><span>Mallandro</span><span>Glu glu</span><span>Iê iê</span><span>Mallandro</span><span>Glu glu</span><span>Iê iê</span></div></div>
+    <div class="wrap star__grid">
+      <div class="star__text">
+        <p class="sticker">★ artista principal ★</p>
+        <h2 class="star__name">Sérgio<br><span>Mallandro</span></h2>
+        <p class="star__lead">Humorista, apresentador e ícone da TV brasileira. A Planeta E produz os shows do Sérgio Mallandro e leva o glu glu iê iê para teatros, festivais e eventos.</p>
+        <ul class="star__list">
+          <li><b>Shows de humor</b><span>Teatros e casas de show</span></li>
+          <li><b>Festivais</b><span>Loucos por Rir, Riso Fest</span></li>
+          <li><b>Eventos e marcas</b><span>Corporativos, camarotes e ativações</span></li>
+          <li><b>Participações especiais</b><span>Presença em festas e lançamentos</span></li>
+        </ul>
+        <div class="star__actions">
+          <a class="btn btn--fire" id="starGo" href="https://wa.me/5511993810372?text=Ol%C3%A1%2C%20Planeta%20E!%20Quero%20informa%C3%A7%C3%B5es%20para%20contratar%20o%20show%20do%20S%C3%A9rgio%20Mallandro." target="_blank" rel="noopener">Contratar o show <span aria-hidden="true">→</span></a>
+          <span class="star__note">Agenda e propostas direto com a Planeta E</span>
+        </div>
+      </div>
+      <div class="star__stage">
+        <div class="star__burst" aria-hidden="true"></div>
+        <div class="bulbs bulbs--stage" aria-hidden="true"><i class="bulbs__t"></i><i class="bulbs__b"></i><i class="bulbs__l"></i><i class="bulbs__r"></i></div>
+        <img class="star__cut" src="img/mallandro-cut.png" alt="Sérgio Mallandro de jaqueta vermelha, sorrindo" width="500" height="495">
+        <figure class="star__phone" id="starPhone">
+          <video muted loop playsinline preload="none" poster="vid/mallandro.jpg" data-src="vid/mallandro.mp4"></video>
+          <figcaption><i class="rec"></i> recado do Mallandro <span>toque para ouvir</span></figcaption>
+        </figure>
+        <img class="star__poster" src="img/f-loucos-sq.jpg" alt="Cartaz Loucos por Rir com Sérgio Mallandro" loading="lazy">
       </div>
     </div>
   </section>
@@ -362,6 +405,10 @@
     </div>
   </section>
 
+  <div class="tapes tapes--solo" aria-hidden="true">
+    <div class="tape tape--b marq" data-dir="-1"><div class="marq__row"><span>Solicite sua proposta</span><i>★</i><span>Contrate o Mallandro</span><i>★</i><span>Solicite sua proposta</span><i>★</i><span>Contrate o Mallandro</span><i>★</i><span>Solicite sua proposta</span><i>★</i><span>Contrate o Mallandro</span><i>★</i></div></div>
+  </div>
+
   <!-- 11. CONTATO -->
   <section class="contact" id="contato">
     <div class="radar" aria-hidden="true"><i></i><i></i><i></i><b></b></div>
@@ -381,7 +428,8 @@
         <fieldset>
           <legend>Tipo de projeto</legend>
           <div class="chips" id="sigType">
-            <label><input type="radio" name="tipo" value="Show ou turnê" checked><span>Show ou turnê</span></label>
+            <label><input type="radio" name="tipo" value="Show do Sérgio Mallandro" checked><span>Show do Mallandro</span></label>
+            <label><input type="radio" name="tipo" value="Show ou turnê"><span>Outro show</span></label>
             <label><input type="radio" name="tipo" value="Gerenciamento de carreira"><span>Carreira</span></label>
             <label><input type="radio" name="tipo" value="Evento corporativo ou camarote"><span>Evento / camarote</span></label>
             <label><input type="radio" name="tipo" value="Festival de humor"><span>Festival de humor</span></label>
@@ -408,10 +456,10 @@
     </div>
     <div class="ft__cols">
       <div class="ft__brand">
-        <img src="img/logo.svg" alt="Planeta E Produções" width="326" height="100" class="ft__logo">
+        <img src="img/logo-light.svg" alt="Planeta E Produções" width="417" height="108" class="ft__logo">
         <p>Produção artística, eventos e gestão estratégica de carreiras desde setembro de 2009.</p>
       </div>
-      <nav aria-label="Rodapé"><h4>Navegação</h4><a href="#sobre">Sobre</a><a href="#servicos">Serviços</a><a href="#processo">Processo</a><a href="#destaques">Cases</a><a href="#aovivo">Ao vivo</a><a href="#contato">Contato</a></nav>
+      <nav aria-label="Rodapé"><h4>Navegação</h4><a href="#mallandro">Sérgio Mallandro</a><a href="#sobre">Sobre</a><a href="#servicos">Serviços</a><a href="#processo">Processo</a><a href="#destaques">Cases</a><a href="#aovivo">Ao vivo</a><a href="#contato">Contato</a></nav>
       <div><h4>Serviços</h4><a href="#servicos">Shows e eventos</a><a href="#servicos">Gestão de carreira</a><a href="#servicos">Imagem e marketing</a><a href="#servicos">Contratos e marcas</a></div>
       <div><h4>Contato</h4><a href="https://wa.me/5511993810372" target="_blank" rel="noopener">(11) 9 9381-0372</a><a href="mailto:sanplanetae@gmail.com">sanplanetae@gmail.com</a><span>São Paulo, SP</span><a href="https://www.instagram.com/sandritomusic" target="_blank" rel="noopener">Instagram</a><a href="https://www.facebook.com/share/16fk3D4ihV/" target="_blank" rel="noopener">Facebook</a></div>
     </div>
@@ -439,6 +487,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
-<script src="main.js?v=5"></script>
+<script src="main.js?v=9"></script>
 </body>
 </html>
