@@ -267,47 +267,10 @@ void main(){
     $('#sig textarea').value = `Vi o case ${t} no site e quero algo nessa linha.`;
   });
 
-  /* ---------- serviços: órbita ---------- */
-  const SVC = [
-    ['Produção de shows', 'Execução completa, da pré-produção à última luz do palco.'],
-    ['Gerenciamento de carreira', 'Gestão estratégica para transformar talentos em marcas fortes.'],
-    ['Planejamento de imagem', 'Posicionamento pensado na individualidade de cada artista.'],
-    ['Marketing digital', 'Conectando o artista ao seu público de forma autêntica e impactante.'],
-    ['Curadoria de repertório', 'Um olhar sensível às tendências sem perder a identidade.'],
-    ['Intermediação de contratos', 'Negociação com ética e transparência, de artistas a grandes marcas.'],
-    ['Estratégias de crescimento', 'Planos de curto, médio e longo prazo.'],
-    ['Eventos e camarotes', 'Camarote Arena Corinthians, Camarote F1, festivais e lançamentos.'],
-  ];
-  const sats = $('#sats'), list = $$('#svcList li');
-  sats.innerHTML = SVC.map((s, i) => `<i class="sat" data-i="${i}" title="${s[0]}"></i>`).join('');
-  const satEls = $$('.sat', sats);
-  let cur = 0, userPicked = false, rot = 0, orbitVisible = false;
-  const pick = i => {
-    cur = i;
-    list.forEach((li, j) => li.classList.toggle('is-on', j === i));
-    satEls.forEach((s, j) => s.classList.toggle('is-on', j === i));
-    $('#ocardT').textContent = SVC[i][0];
-    $('#ocardP').textContent = SVC[i][1];
-  };
-  pick(0);
-  list.forEach((li, i) => {
-    li.querySelector('button').addEventListener('click', () => { userPicked = true; pick(i); });
-    li.addEventListener('mouseenter', () => { userPicked = true; pick(i); });
-  });
-  satEls.forEach((s, i) => s.addEventListener('click', () => { userPicked = true; pick(i); }));
-  new IntersectionObserver(([e]) => { orbitVisible = e.isIntersecting; if (orbitVisible) requestAnimationFrame(spin); }).observe($('#orbit'));
-  setInterval(() => { if (orbitVisible && !userPicked) pick((cur + 1) % SVC.length); }, 3200);
-  const orbitEl = $('#orbit');
-  function spin() {
-    if (!orbitVisible) return;
-    if (!RM) rot += .0018;
-    const w = orbitEl.clientWidth, rr = w * .36;
-    satEls.forEach((s, i) => {
-      const a = rot + i / SVC.length * Math.PI * 2;
-      s.style.transform = `translate(${Math.cos(a) * rr}px, ${Math.sin(a) * rr * .98}px)`;
-    });
-    requestAnimationFrame(spin);
-  }
+  /* ---------- para quem → tipo no formulário ---------- */
+  $$('.who__card').forEach(a => a.addEventListener('click', () => {
+    const r = $(`#sig input[value="${a.dataset.tipo}"]`); if (r) r.checked = true;
+  }));
 
   /* ---------- vídeos: carregar perto, tocar quando visível ---------- */
   const lazyVids = $$('video[data-src]');
@@ -418,7 +381,7 @@ void main(){
   });
 
   // reveals
-  const rv = ['.about__head', '.orbitclock', '.about__cols p', '.about__mission', '.svc__text > *', '.cases__head', '.arch__head', '.contact__text > *', '.sig', '.ft__grid'];
+  const rv = ['.sec__head', '.about__photo', '.about__text > p:not(.about__lead)', '.mvv article', '.orbitclock', '.arch__head', '.contact__text > *', '.sig', '.ft__cta', '.ft__cols > *'];
   rv.forEach(sel => $$(sel).forEach(el => el.classList.add('rv')));
   ScrollTrigger.batch('.rv', {
     start: 'top 88%',
@@ -451,12 +414,25 @@ void main(){
     return () => tw.kill();
   });
 
-  // banana gun: parallax e título
-  if (!RM) {
-    gsap.fromTo('.bg__video', { yPercent: -6 }, { yPercent: 6, ease: 'none', scrollTrigger: { trigger: '#banana', start: 'top bottom', end: 'bottom top', scrub: true } });
-    gsap.from('.bg__title', { yPercent: 40, opacity: 0, ease: 'power3.out', scrollTrigger: { trigger: '#banana', start: 'top 60%', end: 'top 10%', scrub: true } });
-    gsap.from('.ft__big', { yPercent: 50, ease: 'none', scrollTrigger: { trigger: '.ft', start: 'top bottom', end: 'bottom bottom', scrub: true } });
-  }
+  // processo: linha de progresso e etapas acesas
+  const procSteps = $$('#procList li');
+  ScrollTrigger.create({
+    trigger: '#procList', start: 'top 75%', end: 'bottom 45%', scrub: true,
+    onUpdate: s => {
+      $('#procList').style.setProperty('--p', s.progress);
+      procSteps.forEach((li, i) => li.classList.toggle('is-on', s.progress >= i / (procSteps.length - 1) - .02));
+    }
+  });
+  gsap.from('.pillar', { y: 60, opacity: 0, duration: .9, stagger: .1, ease: 'power3.out', scrollTrigger: { trigger: '.svc__grid', start: 'top 85%' } });
+  gsap.from('.who__card', { y: 50, opacity: 0, duration: .8, stagger: .08, ease: 'power3.out', scrollTrigger: { trigger: '.who__grid', start: 'top 88%' } });
+
+  // cases em destaque: cartões empilhados encolhem quando o próximo chega
+  mm.add('(min-width: 901px)', () => {
+    const cards = $$('.fcase');
+    cards.slice(0, -1).forEach((card, i) => {
+      gsap.to(card, { scale: .92, opacity: .45, ease: 'none', scrollTrigger: { trigger: cards[i + 1], start: 'top bottom', end: 'top 25%', scrub: true } });
+    });
+  });
 
   addEventListener('load', () => ScrollTrigger.refresh());
 })();
