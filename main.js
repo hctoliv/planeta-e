@@ -82,7 +82,7 @@
 
   /* ---------- o planeta (WebGL) ---------- */
   const sky = $('#sky');
-  const planet = { s: 0, mx: 0, my: 0, tx: 0, ty: 0, on: true };
+  const planet = { s: 0, mx: 0, my: 0, tx: 0, ty: 0, on: true, px: 0, py: -.3, pr: .2 };
   (function initPlanet() {
     const gl = sky.getContext('webgl', { antialias: true, alpha: false, powerPreference: 'high-performance' });
     if (!gl) { sky.remove(); return; }
@@ -150,7 +150,16 @@ void main(){
       sky.height = Math.round(sky.clientHeight * scale);
       gl.viewport(0, 0, sky.width, sky.height);
     };
-    size(); addEventListener('resize', size);
+    // no celular o planeta fica no vão entre o texto e a faixa de números
+    const placeMobile = () => {
+      const hero = $('#hero').getBoundingClientRect(), gap = $('.hero__planetgap').getBoundingClientRect(), H = hero.height || 1;
+      const r = Math.min(hero.width * .36, 170);
+      const cy = gap.height ? gap.top - hero.top + gap.height * .62 : H * .78;
+      planet.px = .02; planet.py = (H / 2 - cy) / H; planet.pr = r / H;
+    };
+    size(); placeMobile();
+    addEventListener('resize', () => { size(); placeMobile(); });
+    addEventListener('load', placeMobile);
     addEventListener('pointermove', e => {
       planet.tx = (e.clientX / innerWidth - .5) * 2;
       planet.ty = -(e.clientY / innerHeight - .5) * 2;
@@ -166,8 +175,8 @@ void main(){
       gl.uniform1f(uS, planet.s);
       gl.uniform2f(uM, planet.mx, planet.my);
       const asp = sky.width / sky.height;
-      if (asp > 1.05) gl.uniform3f(uP, asp * .5 - .33, .06, .25);
-      else gl.uniform3f(uP, 0, -.34, .2);
+      if (innerWidth > 900 && asp > 1.05) gl.uniform3f(uP, asp * .5 - .33, .06, .25);
+      else gl.uniform3f(uP, planet.px, planet.py, planet.pr);
       gl.drawArrays(gl.TRIANGLES, 0, 3);
       requestAnimationFrame(draw);
     }
